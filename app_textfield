@@ -1,0 +1,49 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class TextDisplayApplet extends Applet implements ActionListener {
+    TextField textField;
+    Button displayButton;
+    Label displayLabel;
+
+    public void init() {
+        // Set layout
+        setLayout(new FlowLayout());
+
+        // Create components
+        textField = new TextField(20);
+        displayButton = new Button("Display");
+        displayLabel = new Label("");
+
+        // Add components to applet
+        add(textField);
+        add(displayButton);
+        add(displayLabel);
+
+        // Add action listener to the button
+        displayButton.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == displayButton) {
+            // Get text from the text field
+            String text = textField.getText();
+            
+            // Display the text in the label
+            displayLabel.setText("Text entered: " + text);
+        }
+    }
+}
+/*
+<html>
+<head>
+<title>Text Display Applet</title>
+</head>
+<body>
+<applet code="TextDisplayApplet.class" width="300" height="200">
+</applet>
+</body>
+</html>
+
+*/
